@@ -13,27 +13,16 @@ export const AppRouter = () => {
 		return <Loader />;
 	}
 
-	return isAuth ? (
+	return (
 		<Routes>
-			{privateRoutes.map(route => (
+			{(isAuth ? privateRoutes : publicRoutes).map(route => (
 				<Route
 					key={route.path}
 					path={route.path}
-					element={<route.component />}
+					element={React.createElement(route.component)}
 				/>
 			))}
-			<Route path='*' element={<Posts />} />
-		</Routes>
-	) : (
-		<Routes>
-			{publicRoutes.map(route => (
-				<Route
-					key={route.path}
-					path={route.path}
-					element={<route.component />}
-				/>
-			))}
-			<Route path='*' element={<Login />} />
+			<Route path='*' element={isAuth ? <Posts /> : <Login />} />
 		</Routes>
 	);
 };
