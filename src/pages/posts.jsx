@@ -1,18 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
-import PostService from '../entities/post/api/post-service';
-import PostFilter from '../features/post-filter/ui/post-filter';
-import PostForm from '../features/post-form/ui/post-form';
-import PostList from '../features/post-list/ui/post-list';
-import MyButton from '../shared/ui/button/button';
-import Loader from '../shared/ui/loader/loader';
-import MyModal from '../shared/ui/modal/modal';
-import Pagination from '../shared/ui/pagination/pagination';
-import MySelect from '../shared/ui/select/select';
-import { useFetching } from '../shared/lib/hooks/useFetching';
-import { useObserver } from '../shared/lib/hooks/useObserver';
-import { usePosts } from '../features/post-filter/model/hooks/usePosts';
-import '../shared/styles/App.css';
-import { getPagesCount } from '../shared/lib/pagination/pages';
+import PostService from '@api/post-service';
+import PostFilter from '@post-filter/ui/post-filter';
+import PostForm from '@post-form/ui/post-form';
+import PostList from '@post-list/ui/post-list';
+import MyButton from '@shared-ui/button/button';
+import Loader from '@shared-ui/loader/loader';
+import MyModal from '@shared-ui/modal/modal';
+import Pagination from '@shared-ui/pagination/pagination';
+import MySelect from '@shared-ui/select/select';
+import { useFetching } from '@shared-hooks/useFetching';
+import { useObserver } from '@shared-hooks/useObserver';
+import { usePosts } from '@post-filter/model/hooks/usePosts';
+import '@shared-styles/App.css';
+import { getPagesCount } from '@shared-pagination/pages';
 
 function Posts() {
 	const [posts, setPosts] = useState([]);

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import MyInput from '../../../shared/ui/input/input';
-import MyButton from '../../../shared/ui/button/button';
+import MyInput from '@shared-ui/input/input';
+import MyButton from '@shared-ui/button/button';
 
 const PostForm = ({ create }) => {
 	const [post, setPost] = useState({ title: '', body: '' });

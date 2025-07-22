@@ -1,5 +1,5 @@
-import MyInput from '../../../shared/ui/input/input';
-import MySelect from '../../../shared/ui/select/select';
+import MyInput from '@shared-ui/input/input';
+import MySelect from '@shared-ui/select/select';
 
 export const PostFilter = ({ filter, setFilter }) => {
 	return (

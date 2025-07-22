@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { AppRouter } from './providers/router/app-router';
-import { Navbar } from '../shared/ui/navbar/navbar';
-import { AuthContext } from './providers/auth/context';
-import '../shared/styles/App.css';
+import { AppRouter } from '@router/app-router';
+import { Navbar } from '@shared-ui/navbar/navbar';
+import { AuthContext } from '@auth/context';
+import '@shared-styles/App.css';
 
 function App() {
 	const [isAuth, setIsAuth] = useState(false);

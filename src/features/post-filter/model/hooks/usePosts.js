@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useSortedPosts } from '../../../../shared/lib/hooks/useSortedPost';
+import { useSortedPosts } from '@shared-hooks/useSortedPost';
 
 export const usePosts = (posts, sort, query) => {
 	const sortedPosts = useSortedPosts(posts, sort);

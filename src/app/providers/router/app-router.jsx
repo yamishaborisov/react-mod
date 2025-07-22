@@ -1,10 +1,11 @@
 import { useContext } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Posts from '../../../pages/Posts';
-import { Login } from '../../../pages/login';
-import Loader from '../../../shared/ui/loader/loader';
-import { AuthContext } from '../auth/context';
-import { publicRoutes, privateRoutes } from './routes';
+import { Login } from '@pages/login';
+import Posts from '@pages/Posts';
+import Loader from '@shared-ui/loader/loader';
+import { AuthContext } from '@auth/context';
+import { ProtectedRoute } from './protected-route';
+import { routes } from './routes';
 
 export const AppRouter = () => {
 	const { isAuth, isLoading } = useContext(AuthContext);
@@ -15,11 +16,13 @@ export const AppRouter = () => {
 
 	return (
 		<Routes>
-			{(isAuth ? privateRoutes : publicRoutes).map(route => (
+			{routes.map(({ path, element, private: isPrivate }) => (
 				<Route
-					key={route.path}
-					path={route.path}
-					element={React.createElement(route.component)}
+					key={path}
+					path={path}
+					element={
+						isPrivate ? <ProtectedRoute>{element}</ProtectedRoute> : element
+					}
 				/>
 			))}
 			<Route path='*' element={isAuth ? <Posts /> : <Login />} />

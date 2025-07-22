@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import MyButton from '../../../shared/ui/button/button';
+import MyButton from '@shared-ui/button/button';
 
 const PostItem = props => {
 	const navigate = useNavigate();

@@ -1,4 +1,4 @@
-import { getPagesArray } from '../../lib/pagination/pages';
+import { getPagesArray } from '@shared-pagination/pages';
 
 const Pagination = ({ totalPages, page, changePage }) => {
 	let pagesArray = getPagesArray(totalPages);
