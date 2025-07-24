@@ -1,6 +1,7 @@
 import React from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import PostItem from '@post-item/ui/post-item';
+import styles from './post-list.module.css';
 
 const PostList = ({ posts, title, remove }) => {
 	if (!posts.length) {
@@ -18,7 +19,7 @@ const PostList = ({ posts, title, remove }) => {
 						<CSSTransition
 							key={post.id}
 							timeout={500}
-							classNames='post'
+							classNames={styles.post}
 							nodeRef={nodeRef}
 						>
 							<div ref={nodeRef}>

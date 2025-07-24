@@ -1,19 +1,18 @@
 import React from 'react';
-import cl from './modal.module.css';
+import clsx from 'clsx';
+import styles from './modal.module.css';
 
 const MyModal = ({ children, visible, setVisible }) => {
-	const rootClasses = [cl.myModal];
-
-	if (visible) {
-		rootClasses.push(cl.active);
-	}
-
 	return (
-		<div className={rootClasses.join(' ')} onClick={() => setVisible(false)}>
-			<div className={cl.myModalContent} onClick={e => e.stopPropagation()}>
+		<div
+			className={clsx(styles.myModal, { [styles.active]: visible })}
+			onClick={() => setVisible(false)}
+		>
+			<div className={styles.myModalContent} onClick={e => e.stopPropagation()}>
 				{children}
 			</div>
 		</div>
 	);
 };
+
 export default MyModal;

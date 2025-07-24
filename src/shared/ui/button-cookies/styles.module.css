@@ -1,0 +1,27 @@
+.btn {
+	width: 240px;
+	cursor: pointer;
+	border-radius: 6px;
+	padding: 0.5rem 1rem;
+	font-weight: 500;
+	transition: all 0.3s ease;
+}
+
+.btnAccept {
+	background-color: teal; /* базовый синий */
+	color: white;
+	border: none;
+}
+.btnDecline:hover {
+	/* background-color: #646363;  */
+	box-shadow: 0 4px 8px grey; /* лёгкая тень */
+	transform: translateY(-2px); /* приподнимается чуть вверх */
+	filter: brightness(1.05); /* чуть ярче */
+}
+
+.btnAccept:hover {
+	background-color: rgb(45, 161, 161); /* смена цвета */
+	box-shadow: 0 4px 8px rgba(0, 128, 128, 0.4); /* лёгкая тень */
+	transform: translateY(-2px); /* приподнимается чуть вверх */
+	filter: brightness(1.05); /* чуть ярче */
+}

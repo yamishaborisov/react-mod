@@ -1,0 +1,27 @@
+.cookieBanner {
+	position: fixed;
+	bottom: 10px;
+	left: 200px;
+	right: 200px;
+	height: 200px;
+	width: 600px;
+	margin: 0 auto;
+	background: #eee;
+	padding: 1rem;
+	border: 1px solid #ccc;
+	z-index: 1000;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 50px;
+	gap: 1rem;
+}
+p {
+	grid-column: 1 / -1;
+}
+
+.gridCookieActions {
+	grid-column: 1 / -1;
+	display: flex;
+	gap: 0.5rem;
+	justify-content: center;
+}

@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { AppRouter } from '@router/app-router';
 import { Navbar } from '@shared-ui/navbar/navbar';
 import { AuthContext } from '@auth/context';
+import { CookieConsent } from '@features/cookie-consent/ui';
 import '@shared-styles/App.css';
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
 				<Navbar />
 				<AppRouter />
 			</BrowserRouter>
+			<CookieConsent />
 		</AuthContext.Provider>
 	);
 }

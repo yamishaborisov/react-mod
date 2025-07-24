@@ -11,14 +11,7 @@
 .App {
 	width: 800px;
 }
-.post {
-	display: flex;
-	padding: 15px;
-	border: 2px solid teal;
-	margin-top: 15px;
-	justify-content: space-between;
-	align-items: center;
-}
+
 .post-enter {
 	transform: translateX(-350px);
 }
@@ -32,33 +25,4 @@
 .post-exit-active {
 	transform: translateX(-350px);
 	transition: all 500ms ease-in;
-}
-.post-btns {
-	display: flex;
-}
-
-.page_wrapper {
-	margin-top: 30px;
-	display: flex;
-}
-.page {
-	padding: 10px;
-	border: 1px solid teal;
-	cursor: pointer;
-}
-
-.page_current {
-	border: 2px solid orange;
-}
-
-.navbar {
-	height: 50px;
-	width: 100vw;
-	display: flex;
-	align-items: center;
-	padding: 0 15px;
-	background: lightgrey;
-}
-.navbar-links {
-	margin-left: auto;
 }
