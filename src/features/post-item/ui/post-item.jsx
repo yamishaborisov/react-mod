@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import MyButton from '@shared-ui/button/button';
 import styles from './post-item.module.css';
+import clsx from 'clsx';
 
 const PostItem = props => {
 	const navigate = useNavigate();
@@ -8,7 +9,12 @@ const PostItem = props => {
 		navigate(`/posts/${props.post.id}`);
 	};
 	return (
-		<div className={styles.post}>
+		<div
+			className={clsx({
+				[styles.post]: props.layout === 'flex',
+				[styles.postItemGrid]: props.layout === 'grid',
+			})}
+		>
 			<div>
 				<strong>
 					{props.post.id}. {props.post.title}

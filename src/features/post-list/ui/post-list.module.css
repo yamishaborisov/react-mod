@@ -1,8 +1,14 @@
-.post {
+.postList {
 	display: flex;
-	padding: 15px;
-	border: 2px solid teal;
-	margin-top: 15px;
-	justify-content: space-between;
+	flex-direction: column;
 	align-items: center;
+}
+
+.postListGrid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 10px;
+}
+.gridHeader {
+	grid-column: 1 / -1;
 }

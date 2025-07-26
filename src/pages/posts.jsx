@@ -55,6 +55,8 @@ function Posts() {
 		fetchPosts(limit, page);
 	}, [page, limit]);
 
+	const [layout, setLayout] = useState('flex');
+
 	return (
 		<div className='App'>
 			<MyButton style={{ marginTop: '30px' }} onClick={() => setModal(true)}>
@@ -77,12 +79,32 @@ function Posts() {
 					{ value: -1, name: 'Показать все' },
 				]}
 			/>
+			<div>
+				<MyButton onClick={() => setLayout('flex')}>FLEX</MyButton>
+				<MyButton onClick={() => setLayout('grid')}>GRID</MyButton>
+			</div>
+
 			{postError && <h1>Произошла ошибка ${postError}</h1>}
+
+			{/* {layout === 'flex' ? (
+				<PostList
+					posts={sortedAndSearchedPosts}
+					remove={removePost}
+					title='Список постов на флексах'
+				/>
+			) : (
+				<PostListGrid
+					posts={sortedAndSearchedPosts}
+					remove={removePost}
+					title='Список постов на гридах'
+				/>
+			)} */}
 
 			<PostList
 				remove={removePost}
 				posts={sortedAndSearchedPosts}
-				title='Список постов 1'
+				title={layout === 'flex' ? 'Список на флексе' : 'Список на гридах'}
+				layout={layout}
 			/>
 			<div ref={lastElement} style={{ height: 20, background: 'red' }}></div>
 			{isPostsLoading && (
