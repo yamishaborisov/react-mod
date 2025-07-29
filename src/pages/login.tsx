@@ -1,14 +1,14 @@
-import { useContext } from 'react';
+import { useContext, JSX, FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MyButton from '@shared-ui/button/button';
 import MyInput from '@shared-ui/input/input';
 import { AuthContext } from '@auth/context';
 
-export const Login = () => {
+export const Login = (): JSX.Element => {
 	const { setIsAuth } = useContext(AuthContext);
 	const navigate = useNavigate();
 
-	const login = event => {
+	const login = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		setIsAuth(true);
 		localStorage.setItem('auth', 'true');

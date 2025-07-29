@@ -1,27 +1,49 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, JSX } from 'react';
 import { useParams } from 'react-router-dom';
 import PostService from '@api/post-service';
 import Loader from '@shared-ui/loader/loader';
 import { useFetching } from '@shared-hooks/useFetching';
 
-export const PostIdPage = () => {
+type post = {
+	id: number;
+	title: string;
+	body: string;
+};
+
+type comment = {
+	id: number;
+	email: string;
+	body: string;
+};
+
+export const PostIdPage = (): JSX.Element => {
 	const params = useParams();
-	const [post, setPost] = useState({});
-	const [comments, setComments] = useState([]);
-	const [fetchPostById, isLoading, error] = useFetching(async id => {
+	const [post, setPost] = useState<post>({
+		id: 0,
+		title: '',
+		body: '',
+	});
+	const [comments, setComments] = useState<comment[]>([]);
+	const [fetchPostById, isLoading, error] = useFetching(async (id: string) => {
 		const response = await PostService.getById(id);
 		setPost(response.data);
 	});
 
-	const [fetchComments, isComLoading, comError] = useFetching(async id => {
-		const response = await PostService.getCommentsByPostId(id);
-		setComments(response.data);
-	});
+	const [fetchComments, isComLoading, comError] = useFetching(
+		async (id: string) => {
+			const response = await PostService.getCommentsByPostId(id);
+			setComments(response.data);
+		}
+	);
 
 	useEffect(() => {
 		if (params.id) {
-			fetchPostById(params.id);
-			fetchComments(params.id);
+			if (typeof fetchPostById === 'function') {
+				fetchPostById(params.id);
+			}
+			if (typeof fetchComments === 'function') {
+				fetchComments(params.id);
+			}
 		}
 	}, [params.id]);
 	return (

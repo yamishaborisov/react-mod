@@ -1,0 +1,41 @@
+{
+	"compilerOptions": {
+		"target": "ESNext",
+		"lib": ["DOM", "DOM.Iterable", "ESNext"],
+		"allowJs": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"module": "ESNext",
+		"moduleResolution": "Node",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noEmit": true,
+		"jsx": "react-jsx",
+		"baseUrl": "./src",
+		"paths": {
+			"@app/*": ["app/*"],
+			"@auth/*": ["app/providers/auth/*"],
+			"@router/*": ["app/providers/router/*"],
+			"@api/*": ["entities/post/api/*"],
+			"@counter/*": ["features/counter/*"],
+			"@post-filter/*": ["features/post-filter/*"],
+			"@post-form/*": ["features/post-form/*"],
+			"@post-item/*": ["features/post-item/*"],
+			"@post-list/*": ["features/post-list/*"],
+			"@pages/*": ["pages/*"],
+			"@shared-hooks/*": ["shared/lib/hooks/*"],
+			"@shared-pagination/*": ["shared/lib/pagination/*"],
+			"@shared-styles/*": ["shared/styles/*"],
+			"@shared-ui/*": ["shared/ui/*"],
+			"@widgets/*": ["widgets/*"],
+			"@features/*": ["features/*"],
+			"@entities/*": ["entities/*"],
+			"@shared/*": ["shared/*"]
+		}
+	},
+	"include": ["src"],
+	"exclude": ["node_modules"]
+}

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, JSX } from 'react';
 import PostService from '@api/post-service';
 import PostFilter from '@post-filter/ui/post-filter';
 import PostForm from '@post-form/ui/post-form';
@@ -14,32 +14,43 @@ import { usePosts } from '@post-filter/model/hooks/usePosts';
 import '@shared-styles/App.css';
 import { getPagesCount } from '@shared-pagination/pages';
 
-function Posts() {
-	const [posts, setPosts] = useState([]);
+type post = {
+	id: number;
+	title: string;
+	body: string;
+};
 
-	const createPost = newPost => {
+type filter = {
+	sort: string;
+	query: string;
+};
+
+function Posts(): JSX.Element {
+	const [posts, setPosts] = useState<post[]>([]);
+
+	const createPost = (newPost: post) => {
 		setPosts([...posts, newPost]);
 		setModal(false);
 	};
 
-	const removePost = post => {
+	const removePost = (post: post) => {
 		setPosts(posts.filter(p => p.id !== post.id));
 	};
 
-	const changePage = page => {
+	const changePage = (page: number) => {
 		setPage(page);
 	};
 
-	const [filter, setFilter] = useState({ sort: '', query: '' });
+	const [filter, setFilter] = useState<filter>({ sort: '', query: '' });
 	const sortedAndSearchedPosts = usePosts(posts, filter.sort, filter.query);
 	const [modal, setModal] = useState(false);
-	const [totalPages, setTotalPages] = useState(0);
-	const [limit, setLimit] = useState(10);
-	const [page, setPage] = useState(1);
-	const lastElement = useRef();
+	const [totalPages, setTotalPages] = useState<number>(0);
+	const [limit, setLimit] = useState<number>(10);
+	const [page, setPage] = useState<number>(1);
+	const lastElement = useRef<HTMLDivElement | null>(null);
 
 	const [fetchPosts, isPostsLoading, postError] = useFetching(
-		async (limit, page) => {
+		async (limit: number, page: number) => {
 			const response = await PostService.getAll(limit, page);
 			setPosts([...posts, ...response.data]);
 			const totalCount = response.headers['x-total-count'];
@@ -52,7 +63,9 @@ function Posts() {
 	});
 
 	useEffect(() => {
-		fetchPosts(limit, page);
+		if (typeof fetchPosts === 'function') {
+			fetchPosts(limit, page);
+		}
 	}, [page, limit]);
 
 	const [layout, setLayout] = useState('flex');
@@ -70,7 +83,7 @@ function Posts() {
 			<PostFilter filter={filter} setFilter={setFilter} />
 			<MySelect
 				value={limit}
-				onChange={value => setLimit(value)}
+				onChange={(value: number) => setLimit(value)}
 				defaultValue='Кол-во элементов на странице'
 				options={[
 					{ value: 5, name: '5' },

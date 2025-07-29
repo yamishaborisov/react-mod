@@ -1,4 +1,6 @@
-export const Error = () => {
+import type { JSX } from 'react';
+
+export const Error = (): JSX.Element => {
 	return (
 		<div>
 			<h1>Вы перешли на несуществующую страницу</h1>
