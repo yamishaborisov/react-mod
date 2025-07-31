@@ -15,7 +15,7 @@ import '@shared-styles/App.css';
 import { getPagesCount } from '@shared-pagination/pages';
 
 type post = {
-	id: number;
+	id?: number;
 	title: string;
 	body: string;
 };

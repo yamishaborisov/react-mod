@@ -14,11 +14,11 @@ export default class PostService {
 		return response;
 	}
 
-	static async getById(id) {
+	static async getById(id: number) {
 		return await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`);
 	}
 
-	static async getCommentsByPostId(id) {
+	static async getCommentsByPostId(id: number) {
 		return await axios.get(
 			`https://jsonplaceholder.typicode.com/posts/${id}/comments`
 		);

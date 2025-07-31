@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, JSX } from 'react';
 import styles from './styles.module.css';
 import { ButtonCookies } from '@shared/ui/button-cookies';
 
-export const CookieConsent = () => {
+export const CookieConsent = (): JSX.Element | null => {
 	const [visible, setVisible] = useState(false);
 
 	useEffect(() => {
@@ -12,7 +12,7 @@ export const CookieConsent = () => {
 		}
 	}, []);
 
-	const handleChoice = choice => {
+	const handleChoice = (choice: 'accepted' | 'declined'): void => {
 		localStorage.setItem('cookieConsent', choice);
 		setVisible(false);
 	};

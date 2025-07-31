@@ -1,11 +1,21 @@
-import { useState } from 'react';
+import { useState, MouseEvent, JSX } from 'react';
 import MyInput from '@shared-ui/input/input';
 import MyButton from '@shared-ui/button/button';
 
-const PostForm = ({ create }) => {
-	const [post, setPost] = useState({ title: '', body: '' });
+type post = {
+	id?: number;
+	title: string;
+	body: string;
+};
 
-	const addNewPost = e => {
+type postFormProps = {
+	create: (post: post) => void;
+};
+
+const PostForm = ({ create }: postFormProps) => {
+	const [post, setPost] = useState<post>({ title: '', body: '' });
+
+	const addNewPost = (e: MouseEvent<HTMLButtonElement>): void => {
 		e.preventDefault();
 		const newPost = {
 			...post,

@@ -1,6 +1,15 @@
 import { useMemo } from 'react';
 
-export const useSortedPosts = (posts = [], sort) => {
+type post = {
+	id?: number;
+	title: string;
+	body: string;
+};
+
+export const useSortedPosts = (
+	posts: post[] = [],
+	sort?: keyof Pick<post, 'title' | 'body'>
+) => {
 	const sortedPosts = useMemo(() => {
 		if (sort) {
 			return [...posts].sort((a, b) => a[sort].localeCompare(b[sort]));

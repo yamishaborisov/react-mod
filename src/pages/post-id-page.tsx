@@ -5,7 +5,7 @@ import Loader from '@shared-ui/loader/loader';
 import { useFetching } from '@shared-hooks/useFetching';
 
 type post = {
-	id: number;
+	id?: number;
 	title: string;
 	body: string;
 };
@@ -24,17 +24,15 @@ export const PostIdPage = (): JSX.Element => {
 		body: '',
 	});
 	const [comments, setComments] = useState<comment[]>([]);
-	const [fetchPostById, isLoading, error] = useFetching(async (id: string) => {
+	const [fetchPostById, isLoading, error] = useFetching(async id => {
 		const response = await PostService.getById(id);
 		setPost(response.data);
 	});
 
-	const [fetchComments, isComLoading, comError] = useFetching(
-		async (id: string) => {
-			const response = await PostService.getCommentsByPostId(id);
-			setComments(response.data);
-		}
-	);
+	const [fetchComments, isComLoading, comError] = useFetching(async id => {
+		const response = await PostService.getCommentsByPostId(id);
+		setComments(response.data);
+	});
 
 	useEffect(() => {
 		if (params.id) {

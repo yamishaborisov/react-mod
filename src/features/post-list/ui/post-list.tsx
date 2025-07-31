@@ -1,10 +1,28 @@
 import React from 'react';
+import { JSX } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import PostItem from '@post-item/ui/post-item';
 import styles from './post-list.module.css';
 import clsx from 'clsx';
 
-const PostList = ({ posts, title, remove, layout }) => {
+type post = {
+	id?: number;
+	title: string;
+	body: string;
+};
+
+type postListProps = {
+	posts: post[];
+	title: string;
+	remove: (post: post) => void;
+	layout: 'flex' | 'grid';
+};
+const PostList = ({
+	posts,
+	title,
+	remove,
+	layout,
+}: postListProps): JSX.Element => {
 	if (!posts.length) {
 		return <h1 style={{ textAlign: 'center' }}>Посты не найдены!</h1>;
 	}
@@ -24,7 +42,7 @@ const PostList = ({ posts, title, remove, layout }) => {
 			</h1>
 			<TransitionGroup component={null}>
 				{posts.map((post, index) => {
-					const nodeRef = React.createRef(null);
+					const nodeRef = React.createRef<HTMLDivElement>();
 
 					return (
 						<CSSTransition key={post.id} timeout={500} nodeRef={nodeRef}>

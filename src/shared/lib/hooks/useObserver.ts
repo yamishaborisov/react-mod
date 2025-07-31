@@ -1,19 +1,26 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, MutableRefObject } from 'react';
 
-export const useObserver = (ref, canLoad, isLoading, callback) => {
-	const observer = useRef();
+export const useObserver = (
+	ref: MutableRefObject<HTMLElement | null>,
+	canLoad: boolean,
+	isLoading: boolean,
+	callback: () => void
+): void => {
+	const observer = useRef<IntersectionObserver | null>(null);
 
 	useEffect(() => {
 		if (isLoading) return;
+
 		if (observer.current) observer.current.disconnect();
 
-		const cb = entries => {
+		const cb: IntersectionObserverCallback = entries => {
 			if (entries[0].isIntersecting && canLoad) {
 				callback();
 			}
 		};
 
 		observer.current = new IntersectionObserver(cb);
+
 		if (ref.current) {
 			observer.current.observe(ref.current);
 		}
@@ -21,5 +28,5 @@ export const useObserver = (ref, canLoad, isLoading, callback) => {
 		return () => {
 			if (observer.current) observer.current.disconnect();
 		};
-	}, [isLoading]);
+	}, [isLoading, canLoad, callback, ref]);
 };
