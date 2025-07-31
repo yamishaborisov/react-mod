@@ -45,7 +45,7 @@ function Posts(): JSX.Element {
 	const sortedAndSearchedPosts = usePosts(posts, filter.sort, filter.query);
 	const [modal, setModal] = useState(false);
 	const [totalPages, setTotalPages] = useState<number>(0);
-	const [limit, setLimit] = useState<number>(10);
+	const [limit, setLimit] = useState<number | string>(10);
 	const [page, setPage] = useState<number>(1);
 	const lastElement = useRef<HTMLDivElement | null>(null);
 
@@ -68,7 +68,7 @@ function Posts(): JSX.Element {
 		}
 	}, [page, limit]);
 
-	const [layout, setLayout] = useState('flex');
+	const [layout, setLayout] = useState<'flex' | 'grid'>('flex');
 
 	return (
 		<div className='App'>
@@ -83,7 +83,7 @@ function Posts(): JSX.Element {
 			<PostFilter filter={filter} setFilter={setFilter} />
 			<MySelect
 				value={limit}
-				onChange={(value: number) => setLimit(value)}
+				onChange={value => setLimit(value)}
 				defaultValue='Кол-во элементов на странице'
 				options={[
 					{ value: 5, name: '5' },
