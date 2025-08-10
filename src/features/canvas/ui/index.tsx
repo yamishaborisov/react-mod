@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import styles from './style.module.css';
-import MyButton from '@shared-ui/button/button';
+import MyButton from '@shared-ui/button';
 
 type Props = {
 	width?: number;

@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes, FC, ReactNode } from 'react';
-import styles from './button.module.css';
+import styles from './styles.module.css';
 
 interface MyButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	children: ReactNode;
