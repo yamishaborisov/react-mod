@@ -1,0 +1,13 @@
+:root {
+	/* Z-index levels */
+	--z-cookie-consent: 1000;
+
+	/* colors */
+	--color-primary: teal;
+	--white-color: white;
+	--cookie-bg: #eeee;
+	--cookie-btn-accept-bg: rgb(45, 161, 161);
+	--cookie-btn-accept-box-shadow: rgba(0, 128, 128, 0.4);
+	--cookie-btn-decline-box-shadow: grey;
+	--page-current-color: orange;
+}

@@ -5,6 +5,7 @@ import { Navbar } from '@shared-ui/navbar';
 import { AuthContext } from '@app/providers/auth';
 import { CookieConsent } from '@features/cookie-consent/ui';
 import '@shared-styles/App.css';
+import '@shared/styles/variables.css';
 
 function App() {
 	const [isAuth, setIsAuth] = useState(false);

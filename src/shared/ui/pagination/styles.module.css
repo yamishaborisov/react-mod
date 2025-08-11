@@ -4,10 +4,10 @@
 }
 .page {
 	padding: 10px;
-	border: 1px solid teal;
+	border: 1px solid var(--color-primary);
 	cursor: pointer;
 }
 
 .page_current {
-	border: 2px solid orange;
+	border: 2px solid var(--page-current-color);
 }
