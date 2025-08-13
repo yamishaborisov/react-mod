@@ -1,6 +1,6 @@
 import { useEffect, useState, JSX } from 'react';
 import { useParams } from 'react-router-dom';
-import PostService from '@api/index';
+import { PostService } from '@api/index';
 import Loader from '@shared-ui/loader';
 import { useFetching } from '@shared-hooks/useFetching';
 

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, JSX } from 'react';
-import PostService from '@api/index';
+import { PostService } from '@api/index';
 import PostFilter from '@post-filter/ui';
 import PostForm from '@post-form/ui';
 import PostList from '@post-list/ui';
