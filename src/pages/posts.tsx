@@ -9,6 +9,7 @@ import MyModal from '@shared-ui/modal/modal';
 import Pagination from '@shared-ui/pagination/pagination';
 import MySelect from '@shared-ui/select/select';
 import { useFetching } from '@shared-hooks/useFetching';
+import { useNavigate } from 'react-router-dom';
 import { useObserver } from '@shared-hooks/useObserver';
 import { usePosts } from '@post-filter/model/hooks/usePosts';
 import '@shared-styles/App.css';
@@ -69,12 +70,22 @@ function Posts(): JSX.Element {
 	}, [page, limit]);
 
 	const [layout, setLayout] = useState<'flex' | 'grid'>('flex');
+	const navigate = useNavigate();
+	const toDraw = () => {
+		navigate('/canvas');
+	};
 
 	return (
 		<div className='App'>
-			<MyButton style={{ marginTop: '30px' }} onClick={() => setModal(true)}>
-				Создать пост
-			</MyButton>
+			<div>
+				<MyButton style={{ marginTop: '30px' }} onClick={() => setModal(true)}>
+					Создать пост
+				</MyButton>
+				<MyButton style={{ marginTop: '30px' }} onClick={toDraw}>
+					Порисовать
+				</MyButton>
+			</div>
+
 			<MyModal visible={modal} setVisible={setModal}>
 				<PostForm create={createPost} />
 			</MyModal>
