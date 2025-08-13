@@ -1,26 +1,24 @@
-import axios from 'axios';
+import { api } from '@/shared/api';
 
-export class PostService {
-	static async getAll(limit = 10, page_number = 1) {
-		const response = await axios.get(
-			'https://jsonplaceholder.typicode.com/posts',
-			{
-				params: {
-					_limit: limit,
-					_page: page_number,
-				},
-			}
-		);
+export const PostService = {
+	async getAll(limit = 10, page_number = 1) {
+		const response = await api.get('/posts', {
+			params: {
+				_limit: limit,
+				_page: page_number,
+			},
+		});
+
 		return response;
-	}
+	},
 
-	static async getById(id: number) {
-		return await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`);
-	}
+	async getById(id: number) {
+		const response = await api.get(`/posts/${id}`);
+		return response;
+	},
 
-	static async getCommentsByPostId(id: number) {
-		return await axios.get(
-			`https://jsonplaceholder.typicode.com/posts/${id}/comments`
-		);
-	}
-}
+	async getCommentsByPostId(id: number) {
+		const response = await api.get(`/posts/${id}/comments`);
+		return response;
+	},
+};
