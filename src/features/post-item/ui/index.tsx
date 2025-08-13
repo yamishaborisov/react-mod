@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import MyButton from '@shared-ui/button/button';
-import styles from './post-item.module.css';
+import MyButton from '@shared-ui/button';
+import styles from './styles.module.css';
 import clsx from 'clsx';
 import { JSX } from 'react';
 

@@ -1,28 +1,28 @@
 import { useEffect, useRef, useState, JSX } from 'react';
-import PostService from '@api/post-service';
-import PostFilter from '@post-filter/ui/post-filter';
-import PostForm from '@post-form/ui/post-form';
-import PostList from '@post-list/ui/post-list';
-import MyButton from '@shared-ui/button/button';
-import Loader from '@shared-ui/loader/loader';
-import MyModal from '@shared-ui/modal/modal';
-import Pagination from '@shared-ui/pagination/pagination';
-import MySelect from '@shared-ui/select/select';
+import PostService from '@api/index';
+import PostFilter from '@post-filter/ui';
+import PostForm from '@post-form/ui';
+import PostList from '@post-list/ui';
+import MyButton from '@shared-ui/button';
+import Loader from '@shared-ui/loader';
+import MyModal from '@shared-ui/modal';
+import Pagination from '@shared-ui/pagination';
+import MySelect from '@shared-ui/select';
 import { useFetching } from '@shared-hooks/useFetching';
 import { useNavigate } from 'react-router-dom';
 import { useObserver } from '@shared-hooks/useObserver';
 import { usePosts } from '@post-filter/model/hooks/usePosts';
 import '@shared-styles/App.css';
-import { getPagesCount } from '@shared-pagination/pages';
+import { getPagesCount } from '@shared-pagination/index';
 
 type post = {
 	id?: number;
 	title: string;
 	body: string;
 };
-
+type SortField = 'title' | 'body' | '';
 type filter = {
-	sort: string;
+	sort: SortField;
 	query: string;
 };
 
