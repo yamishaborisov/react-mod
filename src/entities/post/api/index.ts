@@ -1,8 +1,8 @@
 import { api } from '@/shared/api';
 
 export const PostService = {
-	async getAll(limit = 10, page_number = 1) {
-		const response = await api.get('/posts', {
+	getAll(limit = 10, page_number = 1) {
+		const response = api.get('/posts', {
 			params: {
 				_limit: limit,
 				_page: page_number,
@@ -12,13 +12,13 @@ export const PostService = {
 		return response;
 	},
 
-	async getById(id: number) {
-		const response = await api.get(`/posts/${id}`);
+	getById(id: number) {
+		const response = api.get(`/posts/${id}`);
 		return response;
 	},
 
-	async getCommentsByPostId(id: number) {
-		const response = await api.get(`/posts/${id}/comments`);
+	getCommentsByPostId(id: number) {
+		const response = api.get(`/posts/${id}/comments`);
 		return response;
 	},
 };
