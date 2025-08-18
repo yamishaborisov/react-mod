@@ -5,7 +5,7 @@ interface MyButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	children: ReactNode;
 }
 
-const MyButton: FC<MyButtonProps> = ({
+export const MyButton: FC<MyButtonProps> = ({
 	children,
 	type = 'button',
 	...props
@@ -16,5 +16,3 @@ const MyButton: FC<MyButtonProps> = ({
 		</button>
 	);
 };
-
-export default MyButton;

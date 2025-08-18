@@ -1,13 +1,13 @@
 import { useRef, useEffect, useState } from 'react';
 import styles from './style.module.css';
-import MyButton from '@/shared/ui/button';
+import { MyButton } from '@/shared/ui/button';
 
 type Props = {
 	width?: number;
 	height?: number;
 };
 
-export default function Canvas({ width = 600, height = 400 }: Props) {
+export function Canvas({ width = 600, height = 400 }: Props) {
 	const canvasRef = useRef<HTMLCanvasElement | null>(null);
 	const contextRef = useRef<CanvasRenderingContext2D | null>(null);
 	const [isDrawing, setIsDrawing] = useState(false);

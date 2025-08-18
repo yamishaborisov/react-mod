@@ -1,16 +1,16 @@
 import { useEffect, useRef, useState, JSX } from 'react';
-import PostService from '@/entities/post/api';
-import PostFilter from '@/features/post-filter/ui';
-import PostForm from '@/features/post-form/ui';
-import PostList from '@/features/post-list/ui';
-import MyButton from '@/shared/ui/button';
-import Loader from '@/shared/ui/loader';
-import MyModal from '@/shared/ui/modal';
-import Pagination from '@/shared/ui/pagination';
-import MySelect from '@/shared/ui/select';
-import { useFetching } from '@/shared/lib/hooks/useFetching';
+import { PostService } from '@/entities';
+import { PostFilter } from '@/features';
+import { PostForm } from '@/features';
+import { PostList } from '@/features';
+import { MyButton } from '@/shared/ui/button';
+import { Loader } from '@/shared/ui/loader';
+import { MyModal } from '@/shared/ui/modal';
+import { Pagination } from '@/shared/ui/pagination';
+import { MySelect } from '@/shared/ui/select';
+import { useFetching } from '@/shared/lib/hooks';
 import { useNavigate } from 'react-router-dom';
-import { useObserver } from '@/shared/lib/hooks/useObserver';
+import { useObserver } from '@/shared/lib/hooks';
 import { usePosts } from '@/features/post-filter/model/hooks/usePosts';
 import '@shared-styles/App.css';
 import { getPagesCount } from '@/shared/lib/pagination';
@@ -26,7 +26,7 @@ type filter = {
 	query: string;
 };
 
-function Posts(): JSX.Element {
+export function Posts(): JSX.Element {
 	const [posts, setPosts] = useState<post[]>([]);
 
 	const createPost = (newPost: post) => {
@@ -150,5 +150,3 @@ function Posts(): JSX.Element {
 		</div>
 	);
 }
-
-export default Posts;

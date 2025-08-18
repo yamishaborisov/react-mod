@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Login } from '@/pages/login';
-import Posts from '@/pages/posts';
-import Loader from '@/shared/ui/loader';
-import { AuthContext } from '@/app/providers/auth';
+import { Posts } from '@/pages/posts';
+import { Loader } from '@/shared/ui/loader';
+import { AuthContext } from '@/shared/lib/contexts';
 import { ProtectedRoute } from '../protected-route';
 import { routes } from '../routes';
 

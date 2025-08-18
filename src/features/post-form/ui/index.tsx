@@ -1,6 +1,6 @@
 import { useState, MouseEvent, JSX } from 'react';
-import MyInput from '@/shared/ui/input';
-import MyButton from '@/shared/ui/button';
+import { MyInput } from '@/shared/ui/input';
+import { MyButton } from '@/shared/ui/button';
 
 type post = {
 	id?: number;
@@ -12,7 +12,7 @@ type postFormProps = {
 	create: (post: post) => void;
 };
 
-const PostForm = ({ create }: postFormProps) => {
+export const PostForm = ({ create }: postFormProps) => {
 	const [post, setPost] = useState<post>({ title: '', body: '' });
 
 	const addNewPost = (e: MouseEvent<HTMLButtonElement>): void => {
@@ -42,5 +42,3 @@ const PostForm = ({ create }: postFormProps) => {
 		</form>
 	);
 };
-
-export default PostForm;

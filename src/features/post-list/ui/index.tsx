@@ -17,7 +17,7 @@ type postListProps = {
 	remove: (post: post) => void;
 	layout: 'flex' | 'grid';
 };
-const PostList = ({
+export const PostList = ({
 	posts,
 	title,
 	remove,
@@ -61,5 +61,3 @@ const PostList = ({
 		</div>
 	);
 };
-
-export default PostList;
