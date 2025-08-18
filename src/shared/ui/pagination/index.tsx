@@ -1,5 +1,5 @@
-import styles from './pagination.module.css';
-import { getPagesArray } from '@shared-pagination/pages';
+import styles from './styles.module.css';
+import { getPagesArray } from '@shared-pagination/index';
 
 type paginationProps = {
 	totalPages: number;

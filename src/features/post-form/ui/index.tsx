@@ -1,6 +1,6 @@
 import { useState, MouseEvent, JSX } from 'react';
-import MyInput from '@shared-ui/input/input';
-import MyButton from '@shared-ui/button/button';
+import MyInput from '@shared-ui/input';
+import MyButton from '@shared-ui/button';
 
 type post = {
 	id?: number;
