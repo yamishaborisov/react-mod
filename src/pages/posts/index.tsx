@@ -1,19 +1,19 @@
 import { useEffect, useRef, useState, JSX } from 'react';
-import PostService from '@api/index';
-import PostFilter from '@post-filter/ui';
-import PostForm from '@post-form/ui';
-import PostList from '@post-list/ui';
-import MyButton from '@shared-ui/button';
-import Loader from '@shared-ui/loader';
-import MyModal from '@shared-ui/modal';
-import Pagination from '@shared-ui/pagination';
-import MySelect from '@shared-ui/select';
-import { useFetching } from '@shared-hooks/useFetching';
+import PostService from '@/entities/post/api';
+import PostFilter from '@/features/post-filter/ui';
+import PostForm from '@/features/post-form/ui';
+import PostList from '@/features/post-list/ui';
+import MyButton from '@/shared/ui/button';
+import Loader from '@/shared/ui/loader';
+import MyModal from '@/shared/ui/modal';
+import Pagination from '@/shared/ui/pagination';
+import MySelect from '@/shared/ui/select';
+import { useFetching } from '@/shared/lib/hooks/useFetching';
 import { useNavigate } from 'react-router-dom';
-import { useObserver } from '@shared-hooks/useObserver';
-import { usePosts } from '@post-filter/model/hooks/usePosts';
+import { useObserver } from '@/shared/lib/hooks/useObserver';
+import { usePosts } from '@/features/post-filter/model/hooks/usePosts';
 import '@shared-styles/App.css';
-import { getPagesCount } from '@shared-pagination/index';
+import { getPagesCount } from '@/shared/lib/pagination';
 
 type post = {
 	id?: number;

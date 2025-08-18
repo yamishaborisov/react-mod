@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { AppRouter } from '@app/providers/router/app-router';
-import { Navbar } from '@shared-ui/navbar';
-import { AuthContext } from '@app/providers/auth';
-import { CookieConsent } from '@features/cookie-consent/ui';
+import { Navbar } from '@/shared/ui/navbar';
+import { CookieConsent } from '@/features/cookie-consent/ui';
 import '@shared-styles/App.css';
+
+import { AuthContext } from './providers/auth';
+import { AppRouter } from './providers/router/app-router';
 
 function App() {
 	const [isAuth, setIsAuth] = useState(false);

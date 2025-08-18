@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useSortedPosts } from '@shared-hooks/useSortedPorts';
+import { useSortedPosts } from '@/shared/lib/hooks/useSortedPorts';
 
 type Post = {
 	id?: number;

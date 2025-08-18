@@ -1,5 +1,5 @@
-import MyInput from '@shared-ui/input';
-import MySelect from '@shared-ui/select';
+import MyInput from '@/shared/ui/input';
+import MySelect from '@/shared/ui/select';
 
 type SortField = 'title' | 'body' | '';
 type Filter = {

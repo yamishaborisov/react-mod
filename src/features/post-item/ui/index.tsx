@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import MyButton from '@shared-ui/button';
+import MyButton from '@/shared/ui/button';
 import styles from './styles.module.css';
 import clsx from 'clsx';
 import { JSX } from 'react';
@@ -20,7 +20,7 @@ type postItemProps = {
 	number: number;
 };
 
-const PostItem = (props: postItemProps): JSX.Element => {
+export const PostItem = (props: postItemProps): JSX.Element => {
 	const navigate = useNavigate();
 	const openPost = () => {
 		navigate(`/posts/${props.post.id}`);
@@ -45,5 +45,3 @@ const PostItem = (props: postItemProps): JSX.Element => {
 		</div>
 	);
 };
-
-export default PostItem;
