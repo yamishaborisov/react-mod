@@ -14,7 +14,7 @@ type onChangeProps = {
 	onChange: (value: string) => void;
 };
 
-const MySelect = ({
+export const MySelect = ({
 	options,
 	defaultValue,
 	value,
@@ -38,5 +38,3 @@ const MySelect = ({
 		</select>
 	);
 };
-
-export default MySelect;

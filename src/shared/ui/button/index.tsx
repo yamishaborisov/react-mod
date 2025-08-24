@@ -1,11 +1,11 @@
 import { ButtonHTMLAttributes, FC, ReactNode } from 'react';
-import styles from './button.module.css';
+import styles from './styles.module.css';
 
 interface MyButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	children: ReactNode;
 }
 
-const MyButton: FC<MyButtonProps> = ({
+export const MyButton: FC<MyButtonProps> = ({
 	children,
 	type = 'button',
 	...props
@@ -16,5 +16,3 @@ const MyButton: FC<MyButtonProps> = ({
 		</button>
 	);
 };
-
-export default MyButton;

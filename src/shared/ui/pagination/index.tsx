@@ -1,5 +1,5 @@
-import styles from './pagination.module.css';
-import { getPagesArray } from '@shared-pagination/pages';
+import styles from './styles.module.css';
+import { getPagesArray } from '../../lib/pagination';
 
 type paginationProps = {
 	totalPages: number;
@@ -7,7 +7,11 @@ type paginationProps = {
 	changePage: (page: number) => void;
 };
 
-const Pagination = ({ totalPages, page, changePage }: paginationProps) => {
+export const Pagination = ({
+	totalPages,
+	page,
+	changePage,
+}: paginationProps) => {
 	let pagesArray = getPagesArray(totalPages);
 	return (
 		<div className={styles.page_wrapper}>
@@ -25,5 +29,3 @@ const Pagination = ({ totalPages, page, changePage }: paginationProps) => {
 		</div>
 	);
 };
-
-export default Pagination;

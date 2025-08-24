@@ -1,8 +1,9 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '@auth/context';
-import MyButton from '../button/button';
-import styles from './navbar.module.css';
+import { AuthContext } from '../../lib/contexts';
+
+import { MyButton } from '../button';
+import styles from './styles.module.css';
 
 export const Navbar = () => {
 	const { isAuth, setIsAuth } = useContext(AuthContext);

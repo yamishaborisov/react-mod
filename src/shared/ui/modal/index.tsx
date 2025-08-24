@@ -1,6 +1,6 @@
 import { FC, ReactNode, MouseEvent } from 'react';
 import clsx from 'clsx';
-import styles from './modal.module.css';
+import styles from './styles.module.css';
 
 interface MyModalProps {
 	children: ReactNode;
@@ -8,7 +8,11 @@ interface MyModalProps {
 	setVisible: (value: boolean) => void;
 }
 
-const MyModal: FC<MyModalProps> = ({ children, visible, setVisible }) => {
+export const MyModal: FC<MyModalProps> = ({
+	children,
+	visible,
+	setVisible,
+}) => {
 	const handleBackgroundClick = () => setVisible(false);
 	const handleContentClick = (e: MouseEvent<HTMLDivElement>) => {
 		e.stopPropagation();
@@ -25,5 +29,3 @@ const MyModal: FC<MyModalProps> = ({ children, visible, setVisible }) => {
 		</div>
 	);
 };
-
-export default MyModal;
