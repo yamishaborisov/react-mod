@@ -1,32 +1,32 @@
 import { useEffect, useRef, useState, JSX } from 'react';
-import PostService from '@api/post-service';
-import PostFilter from '@post-filter/ui/post-filter';
-import PostForm from '@post-form/ui/post-form';
-import PostList from '@post-list/ui/post-list';
-import MyButton from '@shared-ui/button/button';
-import Loader from '@shared-ui/loader/loader';
-import MyModal from '@shared-ui/modal/modal';
-import Pagination from '@shared-ui/pagination/pagination';
-import MySelect from '@shared-ui/select/select';
-import { useFetching } from '@shared-hooks/useFetching';
+import { PostService } from '@/entities';
+import { PostFilter } from '@/features';
+import { PostForm } from '@/features';
+import { PostList } from '@/features';
+import { MyButton } from '@/shared/ui/button';
+import { Loader } from '@/shared/ui/loader';
+import { MyModal } from '@/shared/ui/modal';
+import { Pagination } from '@/shared/ui/pagination';
+import { MySelect } from '@/shared/ui/select';
+import { useFetching } from '@/shared/lib/hooks';
 import { useNavigate } from 'react-router-dom';
-import { useObserver } from '@shared-hooks/useObserver';
-import { usePosts } from '@post-filter/model/hooks/usePosts';
+import { useObserver } from '@/shared/lib/hooks';
+import { usePosts } from '@/features/post-filter/model/hooks/usePosts';
 import '@shared-styles/App.css';
-import { getPagesCount } from '@shared-pagination/pages';
+import { getPagesCount } from '@/shared/lib/pagination';
 
 type post = {
 	id?: number;
 	title: string;
 	body: string;
 };
-
+type SortField = 'title' | 'body' | '';
 type filter = {
-	sort: string;
+	sort: SortField;
 	query: string;
 };
 
-function Posts(): JSX.Element {
+export function Posts(): JSX.Element {
 	const [posts, setPosts] = useState<post[]>([]);
 
 	const createPost = (newPost: post) => {
@@ -150,5 +150,3 @@ function Posts(): JSX.Element {
 		</div>
 	);
 }
-
-export default Posts;

@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { AppRouter } from '@router/app-router';
-import { Navbar } from '@shared-ui/navbar/navbar';
-import { AuthContext } from '@auth/context';
-import { CookieConsent } from '@features/cookie-consent/ui';
+import { Navbar } from '@/shared/ui/navbar';
+import { CookieConsent } from '@/features';
 import '@shared-styles/App.css';
 
-function App() {
+import { AuthContext } from '@/shared/lib/contexts';
+import { AppRouter } from './providers/router/app-router';
+
+export function App() {
 	const [isAuth, setIsAuth] = useState(false);
 	const [isLoading, setLoading] = useState(true);
 
@@ -33,5 +34,3 @@ function App() {
 		</AuthContext.Provider>
 	);
 }
-
-export default App;

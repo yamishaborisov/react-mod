@@ -1,8 +1,8 @@
 import React from 'react';
 import { JSX } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import PostItem from '@post-item/ui/post-item';
-import styles from './post-list.module.css';
+import { PostItem } from '../../post-item/ui';
+import styles from './styles.module.css';
 import clsx from 'clsx';
 
 type post = {
@@ -17,7 +17,7 @@ type postListProps = {
 	remove: (post: post) => void;
 	layout: 'flex' | 'grid';
 };
-const PostList = ({
+export const PostList = ({
 	posts,
 	title,
 	remove,
@@ -61,5 +61,3 @@ const PostList = ({
 		</div>
 	);
 };
-
-export default PostList;
