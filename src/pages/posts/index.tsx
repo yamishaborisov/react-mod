@@ -12,7 +12,7 @@ import { useFetching } from '@/shared/lib/hooks';
 import { useNavigate } from 'react-router-dom';
 import { useObserver } from '@/shared/lib/hooks';
 import { usePosts } from '@/features/post-filter/model/hooks/usePosts';
-import '@shared-styles/App.css';
+import '@/shared/styles/App.css';
 import { getPagesCount } from '@/shared/lib/pagination';
 
 type post = {

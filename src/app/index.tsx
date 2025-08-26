@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Navbar } from '@/shared/ui/navbar';
 import { CookieConsent } from '@/features';
-import '@shared-styles/App.css';
+import '@/shared/styles/App.css';
 
 import { AuthContext } from '@/shared/lib/contexts';
 import { AppRouter } from './providers/router/app-router';
