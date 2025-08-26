@@ -13,6 +13,9 @@ export function Canvas({ width = 600, height = 400 }: Props) {
 	const [isDrawing, setIsDrawing] = useState(false);
 
 	useEffect(() => {
+		const canvas = canvasRef.current;
+		if (!canvas) return;
+		contextRef.current = canvas.getContext('2d');
 		const context = contextRef.current;
 		if (!context) return;
 		context.lineWidth = 2;
