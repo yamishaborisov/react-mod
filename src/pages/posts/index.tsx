@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, JSX } from 'react';
+
 import { PostService } from '@/entities';
 import { PostFilter } from '@/features';
 import { PostForm } from '@/features';
@@ -9,6 +10,7 @@ import { MyModal } from '@/shared/ui/modal';
 import { Pagination } from '@/shared/ui/pagination';
 import { MySelect } from '@/shared/ui/select';
 import { useFetching } from '@/shared/lib/hooks';
+
 import { useNavigate } from 'react-router-dom';
 import { useObserver } from '@/shared/lib/hooks';
 import { usePosts } from '@/features/post-filter/model/hooks/usePosts';
