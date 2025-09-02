@@ -4,6 +4,7 @@ import { PostIdPage } from '@/pages/post-id-page';
 import { Posts } from '@/pages/posts';
 import { CanvasPage } from '@/pages/canvas';
 import { ControlledForm } from '@/pages/controlled-form';
+import { UncontrolledForm } from '@/pages/uncontrolled-form';
 
 export const routes = [
 	{ path: '/login', element: <Login />, private: false },
@@ -12,4 +13,5 @@ export const routes = [
 	{ path: '/posts/:id', element: <PostIdPage />, private: true },
 	{ path: '/canvas', element: <CanvasPage />, private: true },
 	{ path: '/controlled-form', element: <ControlledForm />, private: true },
+	{ path: '/uncontrolled-form', element: <UncontrolledForm />, private: true },
 ];
