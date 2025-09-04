@@ -1,16 +1,11 @@
 import { useEffect, useState, useOptimistic, JSX } from 'react';
-import { MyInput } from '@/shared/ui/input';
-import { MyButton } from '@/shared/ui/button';
+import { MyInput, MyButton, Banner } from '@/shared/ui';
+import { isValidEmail, isValidName } from '@/shared/lib/validation';
 import styles from './styles.module.css';
+import { sendForm, fdGetStr } from '@/shared/lib/utils';
+import type { SendFormPayload } from '@/shared/types';
 
 type FormState = { email: string; name: string; city: string };
-
-const isValidEmail = (v: string) => /\S+@\S+\.\S+/.test(v);
-
-async function sendForm(data: FormState) {
-	await new Promise(r => setTimeout(r, 3000));
-	// throw new Error("fail");
-}
 
 export function ControlledForm(): JSX.Element {
 	const [form, setForm] = useState<FormState>({
@@ -19,6 +14,7 @@ export function ControlledForm(): JSX.Element {
 		city: '',
 	});
 	const [emailError, setEmailError] = useState<string | null>(null);
+	const [nameError, setNameError] = useState<string | null>(null);
 
 	const [banner, setBanner] = useState<string | null>(null);
 
@@ -28,33 +24,46 @@ export function ControlledForm(): JSX.Element {
 	);
 
 	useEffect(() => {
-		if (!form.email) return setEmailError(null);
-		setEmailError(isValidEmail(form.email) ? null : 'Неверный email');
-	}, [form.email]);
-
-	useEffect(() => {
 		if (!banner) return;
 		const t = setTimeout(() => setBanner(null), 2500);
 		return () => clearTimeout(t);
 	}, [banner]);
 
-	const disableSubmit = !form.email || !!emailError;
+	async function submitAction() {
+		const { email, name, city } = form;
 
-	async function submitAction(fd: FormData) {
-		const data: FormState = {
-			email: String(fd.get('email') ?? form.email),
-			name: String(fd.get('name') ?? form.name),
-			city: String(fd.get('city') ?? form.city),
-		};
-		if (!data.email || emailError) return;
+		const emailError: string | null = !email
+			? 'Введите email'
+			: isValidEmail(email)
+			? null
+			: 'Неверный email';
+
+		setEmailError(emailError);
+		if (emailError) return;
+
+		const nameError: string | null = !name
+			? 'Введите имя'
+			: isValidName(name)
+			? null
+			: 'Неверное имя';
+		setNameError(nameError);
+		if (nameError) return;
+
+		const checkedCity: string | undefined = fdGetStr(city);
 
 		showBanner('Отправка…');
 
 		try {
-			await sendForm(data);
-			console.log(data);
+			const payload: SendFormPayload = {
+				email,
+				name,
+				...(checkedCity !== undefined && { city: checkedCity }),
+			};
+			await sendForm(payload);
+			console.log(payload);
 			setBanner('Готово! Проверьте почту.');
 			setForm({ email: '', name: '', city: '' });
+			setEmailError(null);
 		} catch {
 			setBanner('Ошибка отправки. Попробуйте ещё раз.');
 		}
@@ -75,11 +84,7 @@ export function ControlledForm(): JSX.Element {
 				/>
 			</label>
 
-			{emailError && (
-				<div id='email-error' role='alert'>
-					{emailError}
-				</div>
-			)}
+			{emailError && <div id='email-error'>{emailError}</div>}
 
 			<label>
 				Имя
@@ -89,8 +94,11 @@ export function ControlledForm(): JSX.Element {
 					value={form.name}
 					onChange={e => setForm(s => ({ ...s, name: e.target.value }))}
 					placeholder='Иван'
+					aria-invalid={!!nameError}
+					aria-describedby={nameError ? 'name-error' : undefined}
 				/>
 			</label>
+			{nameError && <div id='name-error'>{nameError}</div>}
 
 			<label>
 				Город
@@ -103,18 +111,9 @@ export function ControlledForm(): JSX.Element {
 				/>
 			</label>
 
-			<MyButton type='submit' disabled={disableSubmit}>
-				Отправить
-			</MyButton>
+			<MyButton type='submit'>Отправить</MyButton>
 
-			{optimisticBanner && (
-				<div
-					role={optimisticBanner.startsWith('Ошибка') ? 'alert' : 'status'}
-					className={styles.banner}
-				>
-					{optimisticBanner}
-				</div>
-			)}
+			{optimisticBanner && <Banner>{optimisticBanner}</Banner>}
 		</form>
 	);
 }
