@@ -1,9 +1,7 @@
 import { ButtonHTMLAttributes, FC, ReactNode } from 'react';
 import styles from './styles.module.css';
 
-interface MyButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-	children: ReactNode;
-}
+export type MyButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const MyButton: FC<MyButtonProps> = ({
 	children,
