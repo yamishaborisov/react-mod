@@ -32,21 +32,28 @@ export function ControlledForm(): JSX.Element {
 	async function submitAction() {
 		const { email, name, city } = form;
 
-		const emailError: string | null = !email
-			? 'Введите email'
-			: isValidEmail(email)
-			? null
-			: 'Неверный email';
+		let emailError: string | null;
+
+		if (!email) {
+			emailError = 'Введите email';
+		} else if (isValidEmail(email)) {
+			emailError = null;
+		} else {
+			emailError = 'Неверный email';
+		}
 
 		setEmailError(emailError);
 		if (emailError) return;
 
-		const nameError: string | null = !name
-			? 'Введите имя'
-			: isValidName(name)
-			? null
-			: 'Неверное имя';
-		setNameError(nameError);
+		let nameError: string | null;
+
+		if (!email) {
+			nameError = 'Введите email';
+		} else if (isValidName(name)) {
+			nameError = null;
+		} else {
+			nameError = 'Неверный email';
+		}
 		if (nameError) return;
 
 		const checkedCity: string | undefined = fdGetStr(city);

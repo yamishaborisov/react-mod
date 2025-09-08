@@ -1,14 +1,9 @@
 import { useId, useOptimistic, useRef, useState, JSX, useEffect } from 'react';
-import { MyInput } from '@/shared/ui/input';
-import { MyButton } from '@/shared/ui/button';
+import { MyInput, MyButton, Banner } from '@/shared/ui';
+import { sendForm } from '@/shared/lib/utils';
 import styles from './styles.module.css';
 
 type FormState = { email: string; name: string; city: string };
-
-async function sendForm(data: FormState) {
-	await new Promise(r => setTimeout(r, 3000));
-	console.log('submit:', data);
-}
 
 export function UncontrolledForm(): JSX.Element {
 	const formRef = useRef<HTMLFormElement>(null);
@@ -32,9 +27,9 @@ export function UncontrolledForm(): JSX.Element {
 
 	async function submitAction(fd: FormData) {
 		const data: FormState = {
-			email: String(fd.get('email') ?? ''),
-			name: String(fd.get('name') ?? ''),
-			city: String(fd.get('city') ?? ''),
+			email: String(fd.get('email')),
+			name: String(fd.get('name')),
+			city: String(fd.get('city')),
 		};
 
 		showBanner('Отправка…');
@@ -93,14 +88,7 @@ export function UncontrolledForm(): JSX.Element {
 
 			<MyButton type='submit'>Отправить</MyButton>
 
-			{optimisticBanner && (
-				<div
-					role={optimisticBanner.startsWith('Ошибка') ? 'alert' : 'status'}
-					className={styles.banner}
-				>
-					{optimisticBanner}
-				</div>
-			)}
+			{optimisticBanner && <Banner>{optimisticBanner}</Banner>}
 		</form>
 	);
 }
